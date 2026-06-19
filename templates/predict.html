@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Customer Satisfaction Prediction</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:700px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#1e3c72;
+}
+
+label{
+    font-weight:bold;
+    color:#333;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border:2px solid #2a5298;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#1e3c72;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#2a5298;
+    transform:scale(1.02);
+}
+
+.result{
+    margin-top:25px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:green;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 align="center">
+Customer Satisfaction Prediction
+</h1>
+
+<form action="/predict" method="POST">
+
+<label>Gender</label>
+
+<select name="Gender">
+
+<option value="0">Male</option>
+<option value="1">Female</option>
+
+</select>
+
+
+<label>Customer Type</label>
+
+<select name="Customer_Type">
+
+<option value="0">Loyal Customer</option>
+<option value="1">Disloyal Customer</option>
+
+</select>
+
+
+<label>Type of Travel</label>
+
+<select name="Type_of_Travel">
+
+<option value="0">Personal Travel</option>
+<option value="1">Business Travel</option>
+
+</select>
+
+
+<label>Class</label>
+
+<select name="Class">
+
+<option value="0">Eco Plus</option>
+<option value="1">Business</option>
+<option value="2">Eco</option>
+
+</select>
+
+<label>Age</label>
+<input type="number" name="Age" required>
+
+
+<label>Flight Distance</label>
+<input type="number" name="Flight_Distance" required>
+
+
+<label>Inflight Entertainment</label>
+<input type="number"
+name="Inflight_entertainment"
+required>
+
+
+<label>Baggage Handling</label>
+<input type="number"
+name="Baggage_handling"
+required>
+
+
+<label>Cleanliness</label>
+<input type="number"
+name="Cleanliness"
+required>
+
+
+<label>Departure Delay In Minutes</label>
+<input type="number"
+name="Departure_Delay_in_Minutes"
+required>
+
+
+<label>Arrival Delay In Minutes</label>
+<input type="number"
+step="0.01"
+name="Arrival_Delay_in_Minutes"
+required>
+
+
+<button type="submit">
+
+Predict Satisfaction
+
+</button>
+
+</form>
+
+<div class="result">
+
+{% if prediction %}
+
+Customer Status :
+{{ prediction }}
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
